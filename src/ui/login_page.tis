@@ -60,7 +60,7 @@ function console (obj) {
     var tw = View.window {
         url: self.url("samples/popup/popup-at.htm")
     };
-    tw.root.ns.show(JSON.stringify(obj, " "));
+    // tw.root.ns.show(JSON.stringify(obj, " "));
 }
 
  function getDetailInfo (token) {
