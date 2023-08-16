@@ -41,7 +41,7 @@ var svg_sms = <svg width="22px" height="28px" viewBox="0 0 22 28" version="1.1" 
             </g>
         </g>
     </g>
-</svg>
+</svg>;
 
 var svg_ps = <svg width="24px" height="28px" viewBox="0 0 24 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <title>t</title>
@@ -54,14 +54,14 @@ var svg_ps = <svg width="24px" height="28px" viewBox="0 0 24 28" version="1.1" x
             </g>
         </g>
     </g>
-</svg>
+</svg>;
 
-// function console (obj) {
-//     var tw = View.window {
-//         url: self.url("samples/popup/popup-at.htm")
-//     };
-//     tw.root.ns.show(JSON.stringify(obj, " "));
-// }
+function console (obj) {
+    var tw = View.window {
+        url: self.url("samples/popup/popup-at.htm")
+    };
+    tw.root.ns.show(JSON.stringify(obj, " "));
+}
 
  function getDetailInfo (token) {
     var url = "http://117.161.247.27:8070/cmgo/api/station/user/for/client";
