@@ -1,0 +1,277 @@
+.cmgo {
+    color: #fff;
+    background-color: #0A0A0A;
+}
+
+.cmgo .left {
+    width: 214px;
+    height: 100vh;
+    padding-left: 15px;
+    box-sizing: border-box;
+    background-color: #000;
+    float:left;
+}
+
+.left .left-logo {
+    margin: 20px 0 50px;
+}
+
+.cmgo .left .user-area {
+    margin-bottom: 518px;
+}
+
+.left .nickname-area {
+    cursor: pointer;
+}
+
+.left .user-area .avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 11px;
+}
+
+.left .user-area .nickname {
+    width: 112px;
+    height: 22px;
+    overflow: hidden;
+    margin-right: 7px;
+    font-size: 14px;
+    color: #fff;
+}
+.cmgo .left .pay {
+    margin-bottom: 47px;
+}
+.cmgo .left .pay svg{
+    margin-right: 10px;
+}
+
+.cmgo .left .secure svg{
+    margin-right: 14px;
+}
+
+/* right */
+.cmgo .cmgo-right {
+    height: 100vh;
+    margin-left: 229px;
+    overflow: hidden;
+}
+.cmgo .cmgo-right .greet{
+    font-size: 14px;
+    color: #FFFFFF;
+    line-height: 22px;
+    margin-bottom: 29px;
+    margin-top: 17px;
+}
+
+.station {
+    width: 956px;
+    height: 160px;
+    background: #191919;
+    color: rgba(255,255,255,0.85);
+    padding: 10px 14px;
+    box-sizing: border-box;
+}
+
+.station .type {
+    color: #fff;
+    font-size: 18px;
+    line-height: 28px;
+    margin-right: 23px;
+    margin-bottom: 12px;
+}
+
+.station .type .name{
+    margin-right: 28px;
+}
+
+.status {
+    font-size: 12px;
+}
+
+.status.warning {
+    color: #FC5639;
+}
+
+.status .status-icon {
+    border-radius: 4px;
+    width: 8px;
+    height: 8px;
+    display: inline-block;
+    margin-right: 1em;
+    background: #32bea6;
+}
+
+.status.warning .status-icon {
+    background: #FC5639;
+}
+
+.station .last-time {
+    margin-bottom: 27px;
+}
+
+.station .detail {
+    margin-right: 323px;
+}
+
+.station .detail > .flex {
+    margin-bottom: 12px;
+}
+.station .detail .label {
+    width: 100px;
+    line-height: 20px;
+    margin-right: 74px;
+}
+
+.station .detail .value {
+    text-align: right;
+    line-height: 20px;
+}
+
+
+.station .detail .value .unit{
+   margin-top: 3px;
+}
+
+.station .detail .warning {
+    margin-right: 363px;
+    color: #FC5639;
+}
+
+.opts .btn {
+    width: 160px;
+    height: 50px;
+    border-radius: 8px;
+    font-size: 16px;
+    color: rgba(255,255,255,0.85);
+    line-height: 50px;
+    cursor: pointer;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.opts .send-file-btn{
+    margin-right: 14px;
+    background-color: #191919;
+    border: 1px solid #FFFFFF;
+}
+
+.opts .connect-btn{
+    margin-right: 4px;
+    width: 160px;
+    height: 50px;
+    border-radius: 8px;
+    background-color: #00B73F;
+}
+
+#anchor-rest, #anchor-extra{
+    margin-left: 6px;
+    margin-top: -2px;
+    width: 12px;
+    height: 12px;
+    cursor: pointer;
+}
+
+#popup-rest{
+    width: 256px;
+    height: 31px;
+}
+
+#popup-extra{
+    width: 210px;
+    height: 31px;
+}
+
+#popup-rest .content, #popup-extra .content{
+    margin-left: 10px;
+    background: #282828;
+    border-radius: 4px;
+    box-sizing: border-box;
+    padding: 6px 11px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.85);
+}
+
+.box {
+    width: 254px;
+    height: 172px;
+    background: #000000;
+    border-radius: 9px;
+    color: #FFFFFF;
+    padding: 0 19px 7px 17px;
+    box-sizing: border-box;
+    margin: 120px 0 0 14px;
+}
+
+.box .name {
+    width: 218px;
+    line-height: 65px;
+    border: 1px solid #979797;
+    border-width: 0 0 1px 0;
+    margin-bottom: 24px;
+}
+
+.box .row {
+    flow:horizontal;
+    vertical-align:middle;
+    font-size: 14px;
+    line-height: 22px;
+    margin-bottom: 15px;
+}
+
+.box .row .label {
+    width: 28px;
+    margin-right: 95px;
+}
+
+.box .row .value {
+   text-align: right;
+}
+
+.box .row .value svg {
+    margin-right: 10px;
+ }
+
+.pay-box {
+    width: 254px;
+    height: 172px;
+    background: #000000;
+    border-radius: 9px;
+    margin-left: 15px;
+    padding: 18px;
+    color: #fff;
+    font-size: 14px;
+    line-height: 22px;
+    box-sizing: border-box;
+}
+
+.pay-box .title {
+    margin-bottom: 30px;
+}
+
+.pay-box .desc {
+    margin-left: 11px;
+    margin-bottom: 28px;
+}
+
+.pay-box .bottom .btn{
+    float: right;
+    width: 60px;
+    line-height: 32px;
+    background: #FFFFFF;
+    border-radius: 6px;
+    color: #000000;
+    font-size: 14px;
+    text-align: center;
+    cursor: pointer;;
+}
+
+#anchor-pay{
+    cursor: pointer;
+}
+
+#popup-pay{
+}
+.pay-box{
+    margin-bottom: 100px;
+}

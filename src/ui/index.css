@@ -18,8 +18,11 @@ body {
 }
 
 .app {
-    flow: horizontal;
-    size: *;
+    width: 1200px;
+    height: 760px;
+    box-sizing: border-box;
+    background-color: #000;
+    position: relative;
 }
 
 .lighter-text {
@@ -27,6 +30,58 @@ body {
     font-size: 0.9em;
 }
 
+/* 开始页面-- */
+.start-page{
+    width: 1200px;
+    height: 760px;
+    color: #fff;
+    text-align: center;
+    overflow: hidden;
+}
+
+.start-page .title {
+    margin: 182px auto 23px;
+    height: 22px;
+    font-size: 27px;
+    line-height: 22px;
+}
+
+.start-page .sub-title {
+    font-size: 16px;
+    line-height: 22px;
+    margin: 0 auto 129px;
+}
+
+.start-page .desc {
+    font-size: 14px;
+    line-height: 22px;
+    margin: 0 auto 23px;
+}
+
+.start-page #start-btn{
+    width: 169px;
+    height: 40px;
+    line-height: 40px;
+    background: #FFFFFF;
+    border-radius: 8px;
+    font-size: 16px;
+    margin: 0 auto 10px;
+    cursor: pointer;
+}
+
+.start-page .to-regist{
+    font-size: 14px;
+    text-align: center;
+    margin: 0 auto;
+    color: rgba(255,255,255,0.7);
+}
+
+.start-page .to-regist #resign-link{
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+/* -- 开始页面 */
 .left-pane {
     width: 200px;
     height: *;

@@ -1,9 +1,11 @@
-if (is_osx) view.windowBlurbehind = #light;
+
+// if (is_osx) view.windowBlurbehind = #dark;
 stdout.println("current platform:", OS);
 stdout.println("is_xfce: ", is_xfce);
 
 // html min-width, min-height not working on mac, below works for all
-view.windowMinSize = (scaleIt(560), scaleIt(300));
+view.windowMinSize = (scaleIt(1200), scaleIt(760));
+view.windowMaxSize = (scaleIt(1200), scaleIt(760));
 
 var app;
 var tmp = handler.get_connect_status();
@@ -19,9 +21,10 @@ var svg_menu = <svg #menu viewBox="0 0 512 512">
 	<circle cx="256" cy="448" r="64"/>
 	<circle cx="256" cy="64" r="64"/>
 </svg>;
+
 var svg_refresh_password = <svg #refresh-password xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 2v6h6M2.66 15.57a10 10 0 1 0 .57-8.38"/></svg>;
 
-var my_id = handler.get_id();
+var my_id = "";
 function get_id() {
   my_id = handler.get_id();
   return my_id;
@@ -59,8 +62,9 @@ class ConnectStatus: Reactor.Component {
 }
 
 function createNewConnect(id, type) {
-    id = id.replace(/\s/g, "");
-    app.remote_id.value = formatId(id);
+    stderr.print(id);
+    // id = id.replace(/\s/g, "");
+    // app.remote_id.value = formatId(id);
     if (!id) return;
     var old_id = id;
     id = handler.handle_relay_id(id);
@@ -215,7 +219,7 @@ class Enhancements: Reactor.Component {
         return <li>{translate('Enhancements')}
             <menu #enhancements-menu>
                 {has_hwcodec ? <li #enable-hwcodec><span>{svg_checkmark}</span>{translate("Hardware Codec")} (beta)</li> : ""}
-                <li #enable-abr><span>{svg_checkmark}</span>{translate("Adaptive bitrate")} (beta)</li>
+                <li #enable-abr><span>{svg_checkmark}</span>{translate("Adaptive Bitrate")} (beta)</li>
                 <li #screen-recording>{translate("Recording")}</li>
             </menu>
         </li>;
@@ -316,7 +320,7 @@ class MyIdMenu: Reactor.Component {
                 {username ? 
                 <li #logout>{translate('Logout')} ({username})</li> :
                 <li #login>{translate('Login')}</li>}
-                {handler.is_ok_change_id() && key_confirmed && connect_status > 0 ? <li #change-id>{translate('Change ID')}</li> : ""}
+                {handler.is_ok_change_id() && key_confirmed ? <li #change-id>{translate('Change ID')}</li> : ""}
                 <div .separator />
                 <li #allow-darktheme><span>{svg_checkmark}</span>{translate('Dark Theme')}</li>
                 <Languages />
@@ -365,7 +369,7 @@ class MyIdMenu: Reactor.Component {
         msgbox("custom-nocancel-nook-hasclose", translate("About") + " " + name, "<div style='line-height: 2em'> \
             <div>Version: " + handler.get_version() + " \
             <div>Fingerprint: " + handler.get_fingerprint() + " \
-            <div .link .custom-event url='https://rustdesk.com/privacy.html'>" + translate("Privacy Statement") + "</div> \
+            <div .link .custom-event url='https://rustdesk.com/privacy'>" + translate("Privacy Statement") + "</div> \
             <div .link .custom-event url='https://rustdesk.com'>" + translate("Website") + "</div> \
 	    <div style='background: #2c8cff; color: white; padding: 1em; margin-top: 1em;'>Copyright &copy; 2023 Purslane Ltd.\
             <br />" + handler.get_license() + " \
@@ -409,11 +413,17 @@ class MyIdMenu: Reactor.Component {
                 handler.set_option("whitelist", value.replace("\n", ","));
             }, 300);
         } else if (me.id == "custom-server") {
+            // 1. 获取local-ip-addr、verification-method
             var configOptions = handler.get_options();
+            stdout.println("---------------自定义服务器");
+            for (var item in configOptions)
+                    stdout << item << " "
+            // 2. custom-rendezvous-server 如果已经配置不需要继续return 
             var old_relay = configOptions["relay-server"] || "";
             var old_api = configOptions["api-server"] || "";
-            var old_id = configOptions["custom-rendezvous-server"] || "";
+            var old_id = configOptions["custom-rendezvous-server"] || "";//中继服务器
             var old_key = configOptions["key"] || "";
+            // 3. 重置 custom-rendezvous-server
             msgbox("custom-server", "ID/Relay Server", "<div .form .set-password> \
             <div><span>" + translate("ID Server") + ": </span><input|text .outline-focus name='id' value='" + old_id + "' /></div> \
             <div><span>" + translate("Relay Server") + ": </span><input|text name='relay' value='" + old_relay + "' /></div> \
@@ -426,6 +436,7 @@ class MyIdMenu: Reactor.Component {
                 var relay = (res.relay || "").trim();
                 var api = (res.api || "").trim().toLowerCase();
                 var key = (res.key || "").trim();
+               
                 if (id == old_id && relay == old_relay && key == old_key && api == old_api) return;
                 if (id) {
                     var err = handler.test_if_valid_server(id);
@@ -433,6 +444,7 @@ class MyIdMenu: Reactor.Component {
                 }
                 if (relay) {
                     var err = handler.test_if_valid_server(relay);
+                     stdout.println(err);
                     if (err) return translate("Relay Server") + ": " + err;
                 }
                 if (api) {
@@ -444,6 +456,11 @@ class MyIdMenu: Reactor.Component {
                 configOptions["relay-server"] = relay;
                 configOptions["api-server"] = api;
                 configOptions["key"] = key;
+                for (var (item,value) in configOptions)
+                   { 
+                    stdout << item << ":";
+                    stdout << value << ";";
+                   }
                 handler.set_options(configOptions);
             }, 260);
         } else if (me.id == "socks5-server") {
@@ -535,50 +552,90 @@ function editDirectAccessPort() {
       });
 }
 
+class StartPage: Reactor.Component {
+    function render (){
+        return <div .start-page>
+            <div .title>提供设计帮助</div>
+            <div .sub-title>设计不受限</div>
+            <div .desc>登录CMGo开始你的设计。</div>
+            <button #start-btn>登录CMGo</button>
+            <div .to-regist>没有账号？在此<span #resign-link>创建一个</span></div>
+        </div>
+    }
+
+    event click $(button#start-btn) {
+        app.update({ pageStage: "login" });
+    }
+
+    event click $(#resign-link) () {
+        handler.open_url("http://117.161.247.27:8070/#/pass/register");
+    }
+
+}
+
+// 登录cmgo账号，返回远程id和密码
+
 class App: Reactor.Component
 {
+
+    this var pageStage = "start";
+    this var detailInfo = {};
+
     function this() {
+        this.remote_id = {
+            value: ""
+        };
         app = this;
     }
 
     function render() {
         var is_can_screen_recording = handler.is_can_screen_recording(false);
+        // 隐藏界面
+        const is_multiple_session_visiable = false;
+        const is_id_visiable = false;
+        
         return
             <div .app>
+                {   
+                    this.pageStage === "start" ? <StartPage/> :
+                    this.pageStage === "login" ? <LoginPage/> : (this.detailInfo.userInfo && <Cmgo data={this.detailInfo} @{this.connect_status}/>)
+                }
+                {false && <div>
                     <div .left-pane>
-                    <div>
-                        <div .title>{translate('Your Desktop')}</div>
-                        <div .lighter-text>{translate('desk_tip')}</div>
-                        <div .your-desktop>
-                            <MyIdMenu />
-                            {key_confirmed ? <input type="text" readonly value={formatId(get_id())}/> : translate("Generating ...")}
-                        </div>
-                        <PasswordArea />
-                    </div>
-                    {!is_win || handler.is_installed() ? "": <InstallMe />}
-                    {software_update_url ? <UpdateMe /> : ""}
-                    {is_win && handler.is_installed() && !software_update_url && handler.is_installed_lower_version() ? <UpgradeMe /> : ""}
-                    {is_can_screen_recording ? "": <CanScreenRecording />}
-                    {is_can_screen_recording && !handler.is_process_trusted(false) ? <TrustMe /> : ""}
-                    {!service_stopped && is_can_screen_recording && handler.is_process_trusted(false) && handler.is_installed() && !handler.is_installed_daemon(false) ? <InstallDaemon /> : ""}
-                    {system_error ? <SystemError /> : ""}
-                    {!system_error && handler.is_login_wayland() && !handler.current_is_wayland() ? <FixWayland /> : ""}
-                    {!system_error && handler.current_is_wayland() ? <ModifyDefaultLogin /> : ""}
-                </div>
-                <div .right-pane>
-                    <div .right-content>
-                        <div .card-connect>
-                            <div .title>{translate('Control Remote Desktop')}</div>
-                            <ID @{this.remote_id} />
-                            <div .right-buttons>
-                                <button .button .outline #file-transfer>{translate('Transfer File')}</button>
-                                <button .button #connect>{translate('Connect')}</button>
+                        <div>
+                            <div .title>{translate('Your Desktop')}</div>
+                            <div .lighter-text>{translate('desk_tip')}</div>
+                            <div .your-desktop>
+                                <MyIdMenu />
+                                {key_confirmed ? <input type="text" readonly value={formatId(get_id())}/> : translate("Generating ...")}
                             </div>
+                            <PasswordArea />
                         </div>
-                        <MultipleSessions @{this.multipleSessions} />
+                        {!is_win || handler.is_installed() ? "": <InstallMe />}
+                        {software_update_url ? <UpdateMe /> : ""}
+                        {is_win && handler.is_installed() && !software_update_url && handler.is_installed_lower_version() ? <UpgradeMe /> : ""}
+                        {is_can_screen_recording ? "": <CanScreenRecording />}
+                        {is_can_screen_recording && !handler.is_process_trusted(false) ? <TrustMe /> : ""}
+                        {!service_stopped && is_can_screen_recording && handler.is_process_trusted(false) && handler.is_installed() && !handler.is_installed_daemon(false) ? <InstallDaemon /> : ""}
+                        {system_error ? <SystemError /> : ""}
+                        {!system_error && handler.is_login_wayland() && !handler.current_is_wayland() ? <FixWayland /> : ""}
+                        {!system_error && handler.current_is_wayland() ? <ModifyDefaultLogin /> : ""}
                     </div>
-                    <ConnectStatus @{this.connect_status} />
-                </div>
+                    <div .right-pane>
+                        <div .right-content>
+                            <div .card-connect>
+                                <div .title>{translate('Control Remote Desktop')}</div>
+                                {is_id_visiable&& <ID @{this.remote_id} />}
+                                <div .right-buttons>
+                                    <button .button .outline #file-transfer>{translate('Transfer File')}</button>
+                                    <button .button #connect>{translate('Connect')}</button>
+                                </div>
+                            </div>
+                            {is_multiple_session_visiable && <MultipleSessions @{this.multipleSessions} />}
+                        </div>
+                        <ConnectStatus @{this.connect_status} />
+                    </div>
+                </div>}
                 <div #overlay style="position: absolute;size:*;background:black;opacity:0.5;display:none" />
             </div>;
     }
@@ -592,7 +649,10 @@ class App: Reactor.Component
     }
 
     function newRemote(type) {
-        createNewConnect(this.remote_id.value, type);
+        // TODO set romote_id
+        const remote_id = "36384491";
+        stdout.print(remote_id,type);
+        createNewConnect(remote_id, type);
     }
 }
 
@@ -659,7 +719,7 @@ class UpdateMe: Reactor.Component {
     }
 
     event click $(#install-me) {
-        handler.open_url("https://rustdesk.com/download");
+        handler.open_url("https://rustdesk.com");
         return;
         if (!is_win) {
             handler.open_url("https://rustdesk.com");
@@ -977,35 +1037,35 @@ class PasswordArea: Reactor.Component {
     }
 }
 
-var password_cache = ["","","",""];
-function updatePasswordArea() {
-    self.timer(1s, function() {
-        var temporary_password = handler.temporary_password();
-        var verification_method = handler.get_option('verification-method');
-        var temporary_password_length = handler.get_option('temporary-password-length');
-        var approve_mode = handler.get_option('approve-mode');
-        var update = false;
-        if (password_cache[0] != temporary_password) {
-            password_cache[0] = temporary_password;
-            update = true;
-        }
-        if (password_cache[1] != verification_method) {
-            password_cache[1] = verification_method;
-            update = true;
-        }
-        if (password_cache[2] != temporary_password_length) {
-            password_cache[2] = temporary_password_length;
-            update = true;
-        }
-        if (password_cache[3] != approve_mode) {
-            password_cache[3] = approve_mode;
-            update = true;
-        }
-        if (update) passwordArea.update();
-        updatePasswordArea();
-    });                          
-}
-updatePasswordArea();
+// var password_cache = ["","","",""];
+// function updatePasswordArea() {
+//     self.timer(1s, function() {
+//         var temporary_password = handler.temporary_password();
+//         var verification_method = handler.get_option('verification-method');
+//         var temporary_password_length = handler.get_option('temporary-password-length');
+//         var approve_mode = handler.get_option('approve-mode');
+//         var update = false;
+//         if (password_cache[0] != temporary_password) {
+//             password_cache[0] = temporary_password;
+//             update = true;
+//         }
+//         if (password_cache[1] != verification_method) {
+//             password_cache[1] = verification_method;
+//             update = true;
+//         }
+//         if (password_cache[2] != temporary_password_length) {
+//             password_cache[2] = temporary_password_length;
+//             update = true;
+//         }
+//         if (password_cache[3] != approve_mode) {
+//             password_cache[3] = approve_mode;
+//             update = true;
+//         }
+//         if (update) passwordArea.update();
+//         updatePasswordArea();
+//     });                          
+// }
+// updatePasswordArea();
 
 class ID: Reactor.Component {
     function render() {
@@ -1082,7 +1142,7 @@ function self.ready() {
             view.move(r[0], r[1], r[2], r[3]);
         }
     } else {
-        centerize(scaleIt(800), scaleIt(600));
+        centerize(scaleIt(1200), scaleIt(760));
     }
     if (!handler.get_remote_id()) {
         view.focus = $(#remote_id);
@@ -1117,7 +1177,6 @@ function checkConnectStatus() {
         if (tmp[0] != connect_status) {
             connect_status = tmp[0];
             app.connect_status.update();
-            myIdMenu.update();
         }
         if (tmp[1] != key_confirmed) {
             key_confirmed = tmp[1];
@@ -1175,14 +1234,6 @@ function check_if_overlay() {
 
 checkConnectStatus();
 
-function set_local_user_info(user) {
-    var user_info = {name: user.name};
-    if (user.status) {
-        user_info.status = user.status;
-    }
-    handler.set_local_option("user_info", JSON.stringify(user_info));
-}
-
 function login() {
     var name0 = getUserName();
     var pass0 = '';
@@ -1204,21 +1255,15 @@ function login() {
         }
         abLoading = true;
         var url = handler.get_api_server();
-        httpRequest(url + "/api/login", #post, {username: name, password: pass, id: my_id, uuid: handler.get_uuid(), type: 'account', deviceInfo: getDeviceInfo()}, function(data) {
+        httpRequest(url + "/api/login", #post, {username: name, password: pass, id: my_id, uuid: handler.get_uuid()}, function(data) {
             if (data.error) {
                 abLoading = false;
                 var err = translate(data.error);
                 show_progress(false, err);
                 return;
             }
-            if (data.type == 'email_check') {
-                abLoading = false;
-                show_progress(-1);
-                on_email_check(data);
-                return;
-            }
             handler.set_local_option("access_token", data.access_token);
-            set_local_user_info(data.user);
+            handler.set_local_option("user_info", JSON.stringify(data.user));
             show_progress(-1);
             myIdMenu.update();
             getAb();
@@ -1230,48 +1275,6 @@ function login() {
         });
         return " ";
       });
-}
-
-function on_email_check(last_msg) {
-    var emailHint = last_msg.user.email;
-    msgbox("custom-email-verification-code", translate('Verification code'), <div .form .set-password> 
-            <div><span>{translate('Email')}:</span><span>{emailHint}</span></div> 
-            <div><span>{translate('Verification code')}:</span><input|text name="verification_code" .outline-focus /></div> 
-            <div style="font-size:0.9em; margin-bottom:1em;">{translate('verification_tip')}</div>
-        </div>, "", 
-        function(res=null, show_progress) {
-            if (!res) return;
-            show_progress();
-            var code = (res.verification_code || '').trim();
-            if (!code || code.length < 6) {
-                show_progress(false, translate("Too short, at least 6 characters."));
-                return " ";
-            }
-            abLoading = true;
-            var url = handler.get_api_server();
-            httpRequest(url + "/api/login", #post, {username: last_msg.user.name, id: my_id, uuid: handler.get_uuid(), type: 'email_code', autoLogin: true, verificationCode: code, deviceInfo: getDeviceInfo()}, 
-                function(data) {
-                    if (data.error) {
-                        abLoading = false;
-                        show_progress(false, data.error);
-                        return;
-                    }
-                    handler.set_local_option("access_token", data.access_token);
-                    set_local_user_info(data.user);
-                    show_progress(-1);
-                    myIdMenu.update();
-                    getAb();
-                },
-                function(err, status) {
-                    abLoading = false;
-                    err = translate(err);
-                    if (url.indexOf('rustdesk') < 0) err = url + ', ' + err;
-                    show_progress(false, err);
-                }
-            );
-            return " ";
-        }
-    );
 }
 
 function reset_token() {
@@ -1301,13 +1304,10 @@ function refreshCurrentUser() {
     app.update();
     httpRequest(handler.get_api_server() + "/api/currentUser", #post, {id: my_id, uuid: handler.get_uuid()}, function(data) {
         if (data.error) {
-            if (data.error == 'Invalid token') {
-              reset_token();
-            }
             handleAbError(data.error);
             return;
         }
-        set_local_user_info(data);
+        handler.set_local_option("user_info", JSON.stringify(data));
         myIdMenu.update();
         getAb();
     }, function(err, status) {
@@ -1320,8 +1320,4 @@ function refreshCurrentUser() {
 
 function getHttpHeaders() {
     return "Authorization: Bearer " + handler.get_local_option("access_token");
-}
-
-function getDeviceInfo() {
-    return JSON.parse(handler.get_login_device_info());
 }

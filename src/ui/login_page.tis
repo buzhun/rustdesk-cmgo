@@ -1,0 +1,302 @@
+include "http.tis";
+
+var svg_back = <svg width="25px" height="17px" viewBox="0 0 25 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>返回</title>
+    <g id="客户端" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="客户端登录页-微信登录" transform="translate(-199.000000, -119.000000)" fill="#000000" fill-rule="nonzero">
+            <g id="编组-4" transform="translate(199.000000, 104.000000)">
+                <g id="编组-3" transform="translate(0.000000, 0.000000)">
+                    <g id="返回" transform="translate(0.000000, 15.000000)">
+                        <polygon id="路径" points="25 9.76347725 24.9991197 7.2195293 4.59459142 7.2272807 9.63901735 1.73571604 7.80857532 9.59545365e-13 1.48029737e-15 8.5 7.80857532 17 9.63901735 15.264284 4.59312425 9.77122865"></polygon>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>;
+
+var svg_weixin = <svg width="27px" height="22px" viewBox="0 0 27 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>c</title>
+    <g id="客户端" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="客户端登录页-默认" transform="translate(-197.000000, -522.000000)" fill="#000000" fill-rule="nonzero">
+            <g id="编组-4" transform="translate(197.000000, 107.000000)">
+                <g id="c" transform="translate(0.000000, 415.000000)">
+                    <path d="M18.275625,6.65485232 C18.586125,6.65485232 18.8915625,6.67848101 19.1986875,6.71223629 C18.3718125,2.86075949 14.256,0 9.5563125,0 C4.303125,0 0,3.57974684 0,8.12827004 C0,10.7527426 1.431,12.9080169 3.823875,14.5822785 L2.86875,17.4565401 L6.21,15.7822785 C7.40475,16.0168776 8.36325,16.2599156 9.5563125,16.2599156 C9.8566875,16.2599156 10.1536875,16.2464135 10.4473125,16.2244726 C10.2616875,15.5848101 10.152,14.9164557 10.152,14.2194093 C10.1536875,10.0438819 13.7379375,6.65485232 18.275625,6.65485232 L18.275625,6.65485232 Z M13.138875,4.06413502 C13.861125,4.06413502 14.3353125,4.53839662 14.3353125,5.25738397 C14.3353125,5.97299578 13.861125,6.45232068 13.138875,6.45232068 C12.4250625,6.45232068 11.7061875,5.97299578 11.7061875,5.25738397 C11.7061875,4.53670886 12.423375,4.06413502 13.138875,4.06413502 Z M6.4513125,6.45232068 C5.734125,6.45232068 5.011875,5.97299578 5.011875,5.25738397 C5.011875,4.53839662 5.734125,4.06413502 6.4513125,4.06413502 C7.1685,4.06413502 7.644375,4.53670886 7.644375,5.25738397 C7.644375,5.97299578 7.1685,6.45232068 6.4513125,6.45232068 Z M27,14.1046414 C27,10.2835443 23.176125,7.16962025 18.8814375,7.16962025 C14.333625,7.16962025 10.7544375,10.2852321 10.7544375,14.1046414 C10.7544375,17.935865 14.3353125,21.0396624 18.8814375,21.0396624 C19.8331875,21.0396624 20.793375,20.8016878 21.7485,20.5620253 L24.3691875,22 L23.6503125,19.6101266 C25.569,18.1687764 27,16.2599156 27,14.1046414 Z M16.2455625,12.9080169 C15.771375,12.9080169 15.2904375,12.435443 15.2904375,11.9527426 C15.2904375,11.4767932 15.771375,10.9974684 16.2455625,10.9974684 C16.9711875,10.9974684 17.442,11.4767932 17.442,11.9527426 C17.442,12.435443 16.9711875,12.9080169 16.2455625,12.9080169 Z M21.502125,12.9080169 C21.0313125,12.9080169 20.5520625,12.435443 20.5520625,11.9527426 C20.5520625,11.4767932 21.029625,10.9974684 21.502125,10.9974684 C22.221,10.9974684 22.6985625,11.4767932 22.6985625,11.9527426 C22.6985625,12.435443 22.221,12.9080169 21.502125,12.9080169 Z" id="形状"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>;
+
+var svg_sms = <svg width="22px" height="28px" viewBox="0 0 22 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>e</title>
+    <g id="客户端" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="客户端登录页-默认" transform="translate(-437.000000, -519.000000)" fill="#000000" fill-rule="nonzero">
+            <g id="编组-4" transform="translate(197.000000, 107.000000)">
+                <g id="e" transform="translate(240.000000, 412.000000)">
+                    <path d="M8.75,21.8749285 C8.75,22.3331633 8.93860065,22.7885082 9.26254967,23.1124545 C9.58649868,23.4364295 10.0418758,23.625 10.4999142,23.625 C10.9581528,23.625 11.4134727,23.4364295 11.7374503,23.1124545 C12.0613993,22.7885368 12.25,22.3331633 12.25,21.8749285 C12.25,21.4168653 12.061428,20.9615491 11.7374503,20.6375455 C11.4134727,20.3136277 10.9581528,20.125 10.4999142,20.125 C10.0418758,20.125 9.5865273,20.3135991 9.26254967,20.6375455 C8.93860065,20.9615491 8.75,21.4168367 8.75,21.8749285 L8.75,21.8749285 Z" id="路径"></path>
+                    <path d="M18.7499865,1.55559746 C19.6115072,1.55559746 20.3124617,2.25340679 20.3124617,3.11113206 L20.3124617,24.8888994 C20.3124617,25.7466246 19.6115072,26.444434 18.7499549,26.444434 L3.12498196,26.444434 C2.26342963,26.444434 1.56250677,25.7465932 1.56250677,24.8888994 L1.56250677,3.11113206 C1.56250677,2.25340679 2.26342963,1.55559746 3.12498196,1.55559746 L18.7499865,1.55559746 M18.7499865,1.98951966e-13 L3.12498196,1.98951966e-13 C1.40629713,1.98951966e-13 0,1.40005029 0,3.11113206 L0,24.8888994 C0,26.5999497 1.40623399,28 3.12498196,28 L18.7499865,28 C20.4687029,28 21.875,26.5999811 21.875,24.8888994 L21.875,3.11113206 C21.875,1.40005029 20.4687029,1.98951966e-13 18.7499865,1.98951966e-13 Z" id="形状"></path>
+                    <path d="M16.7222013,7 L4.27779873,7 C3.84786747,7 3.5,6.60865173 3.5,6.12498232 C3.5,5.64131291 3.84786747,5.25 4.27779873,5.25 L16.7222013,5.25 C17.1521325,5.25 17.5,5.64134827 17.5,6.12498232 C17.5,6.60861637 17.1521325,7 16.7222013,7 Z" id="路径"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
+
+var svg_ps = <svg width="24px" height="28px" viewBox="0 0 24 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>t</title>
+    <g id="客户端" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="客户端登录页-微信登录" transform="translate(-199.000000, -516.000000)" fill="#000000" fill-rule="nonzero">
+            <g id="编组-4" transform="translate(199.000000, 104.000000)">
+                <g id="t" transform="translate(-0.000000, 412.000000)">
+                    <path d="M19.215793,11.9 C20.3529102,11.9 21.2745586,12.8403516 21.2745586,14 L21.2745586,23.8 C21.2745586,24.9596484 20.3529102,25.9 19.215793,25.9 L4.11755859,25.9 C2.98044141,25.9 2.05879297,24.9596484 2.05879297,23.8 L2.05879297,14 C2.05879297,12.8403516 2.98044141,11.9 4.11755859,11.9 L19.215793,11.9 Z M19.215793,9.8 L4.11755859,9.8 C1.84335156,9.8 7.77156117e-16,11.6806758 7.77156117e-16,14 L7.77156117e-16,23.8 C7.77156117e-16,26.1193242 1.84335156,28 4.11755859,28 L19.215793,28 C21.49,28 23.3333516,26.1193242 23.3333516,23.8 L23.3333516,14 C23.3333516,11.6806758 21.49,9.8 19.215793,9.8 Z M11.6666758,2.1 C14.3196758,2.1 16.4702344,4.29332422 16.4702344,7 L16.4702344,9.8 L6.86311719,9.8 L6.86311719,7 C6.86311719,4.29332422 9.01367578,2.1 11.6666758,2.1 Z M11.6666758,0 C7.87655859,0 4.80355859,3.13444141 4.80355859,7 L4.80355859,11.9 L18.529793,11.9 L18.529793,7 C18.529793,3.13444141 15.4575586,0 11.6666758,0 Z M11.6666758,22.05 C11.0981172,22.05 10.6369102,21.5802344 10.6369102,21 L10.6369102,16.8 C10.6369102,16.2197656 11.0981172,15.75 11.6666758,15.75 C12.2352344,15.75 12.6964414,16.2197656 12.6964414,16.8 L12.6964414,21 C12.6964414,21.5802344 12.2352344,22.05 11.6666758,22.05 Z" id="形状"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
+
+// function console (obj) {
+//     var tw = View.window {
+//         url: self.url("samples/popup/popup-at.htm")
+//     };
+//     tw.root.ns.show(JSON.stringify(obj, " "));
+// }
+
+ function getDetailInfo (token) {
+    var url = "http://117.161.247.27:8070/cmgo/api/station/user/for/client";
+
+    function onSuccess(res) {
+        const data = res.data;
+        app.update({detailInfo: data});
+    }
+    
+    function onError(err) {
+        stderr.println(err);
+    }
+    const params = {
+        url: url, 
+        protocol: #json,
+        headers: { "token": token}; 
+        success: onSuccess, 
+        error: onError
+    }
+    
+    http.get(params);
+}
+
+function setRendezvousServer (ip) {
+    try{
+        var configOptions = handler.get_options();
+        stdout.println("中继服务器已设置", configOptions["custom-rendezvous-server"]);
+        if(configOptions["custom-rendezvous-server"] == ip){
+            return;
+        }
+        // 2. custom-rendezvous-server 中继服务器设置 
+        configOptions["custom-rendezvous-server"] = ip;
+        stdout.println("中继服务器：",ip);
+        // 3. 重置配置
+        handler.set_options(configOptions);
+    } catch(err)
+    {
+       stdout.println("中继服务器err",err);
+    }
+}
+
+function fetchAndSetRendezvousServer (token) {
+    var url = "http://117.161.247.27:8070/cmgo/api/constant/query";
+
+    function onSuccess(data) {
+        try{
+            const ip = data.data.paramValue;
+            stdout.println(ip);
+            setRendezvousServer(ip);
+        }catch(err)
+        {
+            stdout.println("中继服务器err",err);
+        }
+    }
+    
+    function onError(err) {
+        stderr.println(err);
+    }
+    const params = {
+        url: url, 
+        protocol: #json,
+        headers: { "token": token}; 
+        params: {paramKey: "rendezvous_server"},
+        success: onSuccess, 
+        error: onError
+    }
+    
+    http.post(params);
+}
+
+
+class LoginPage: Reactor.Component {
+    this var username = "";
+    this var password = "";
+    this var output = 1;
+    this var type = "password";
+    this var time = 0;
+    this var errorMsg = "";
+
+    // function this () {
+    //     getDetailInfo("e9d3ce5ae39d8a33c6517083336322a7");
+    //     app.update({
+    //         pageStage:"cmgo",
+    //     });
+    // }
+
+    event click $(#resign-link) () {
+        handler.open_url("http://117.161.247.27:8070/#/pass/register");
+    }
+
+    function render () {
+        
+        return <div .login-page>
+            <div .login-box>
+                <div .title><div .back-icon>{svg_back}</div>登录</div>
+                <div .desc>欢迎回来！很高兴再次相遇</div>
+                {this.type === "password" ? <div>
+                    <div .box-title>
+                        <span .type>密码登录</span>
+                        {this.errorMsg && <span .error>{this.errorMsg}</span>}
+                    </div>
+                    <div .opt>
+                        <input .l-input #username placeholder="输入手机号/电子邮箱"/>
+                        <input .l-input #password placeholder="输入密码"/>
+                    </div>
+                </div> : this.type === "sms" ?<div>
+                    <div .box-title>
+                        <span .type>短信登录</span>
+                        {this.error && <span .error>{this.error}</span>}
+                    </div>
+                    <div .opt>
+                        <input .l-input #username placeholder="输入手机号/电子邮箱"/>
+                        <div .sms-input-area>
+                            <input .l-input #sms placeholder="输入验证码"/>
+                            <div .right-opt>{this.time ? <div .time>{this.time}秒</div> :<button #send>发送</button>}</div>
+                        </div>
+                    </div>
+                </div> : <div .weixin-area>
+                    <div .pic></div>
+                    <div .desc>微信【扫一扫】完成登录/注册</div>
+                    <div .info>未注册手机验证后自动登录，登录或注册即代表同意<span .my-link>用户协议</span>和<span .my-link>隐私政策</span>。 未满18周岁未成年人请勿自行注册，其注册、登录帐号及使用服务需征得监
+                    护人同意。
+                    </div>
+                </div>}
+                {this.type !== "weixin" && <button #submit>登录</button>}
+                <div .split-area>
+                    <div .split-cell />
+                    <div .split-label>或</div>
+                    <div .split-cell />
+                </div>
+                {this.type === "password" ? 
+                    <div .extra-type .flex>
+                        <button .btn #weixin-btn .flex>{svg_weixin}使用微信登录</button>
+                        <button .btn #sms-btn .flex>{svg_sms}使用短信验证码登录</button>
+                    </div> 
+                : this.type === "sms" ? 
+                    <div .extra-type .flex>
+                        <button .btn #weixin-btn .flex >{svg_weixin}使用微信登录</button>
+                        <button .btn #ps-btn .flex>{svg_ps}使用密码登录</button>
+                    </div>
+                :
+                     <div .extra-type .flex>
+                        <button .btn #sms-btn .flex>{svg_sms}使用短信验证码登录</button>
+                        <button .btn #ps-btn .flex>{svg_ps}使用密码登录</button>
+                    </div>
+                }
+                <div .login-bottom .flex>
+                    <div .to-regist #resign-link>没有账号？在此创建一个</div>
+                    {type === "password" && <div .forget>忘记密码</div>}
+                </div>
+            </div>
+            <div .pic-area>
+                <img .bg src="assets/login_bg.png"/>
+            </div>
+        </div>
+    }
+
+    event click $(#sms-btn) {
+        this.update{type:"sms"}
+    }
+    event click $(#ps-btn){
+        this.update{type:"password"}
+    }
+    event click $(#weixin-btn) {
+        this.update{type:"weixin"}
+    }
+
+    event click $(#send) {
+        this.update { time: 60 };
+        this.timer(1s, function() {
+            this.update { time: this.time - 1 };
+            if (this.time > 0){
+                return true; // to keep the timer ticking
+            }
+        });
+    }
+
+    event click $(.back-icon) {
+        app.update({pageStage:"start"});
+    }
+
+    event click $(#submit) {
+        this.handleLogin();
+    };
+
+    function psLogin (mobile, password) {
+        let that = this;
+        var obj = {
+            loginType: 3,
+            mobile: mobile,
+            password: password
+        };
+        var url = "http://117.161.247.27:8070/cmgo/api/user/login";
+
+        function onSuccess(data) {
+            if(data.code == 0){
+                const raw = data.data[0]
+                const token = raw.token;
+                fetchAndSetRendezvousServer(token);
+                getDetailInfo(token);
+                app.update({
+                    pageStage:"cmgo",
+                });
+            } else {
+                that.update({errorMsg: data.msg});
+            }
+        }
+       
+        function onError(err) {
+            stderr.println(err);
+        }
+        const params = {
+            url:url,
+            protocol:#json,
+            params: obj,
+            success: onSuccess,
+            error: onError
+        }
+        http.post(params);
+    }
+
+    function handleLogin () {
+        var mobile = $(#username).value;
+        var password = $(#password).value;
+        if(this.type === "password"){
+            if(!mobile){
+                this.update({errorMsg: "请输入手机号"});
+            }else if (!password){
+                this.update({errorMsg: "请输入密码"});
+            }else{
+                this.update({errorMsg: ""});
+                this.psLogin(mobile, password);
+            }
+        }
+
+    }
+
+}
